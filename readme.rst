@@ -1,70 +1,44 @@
 ###################
-What is CodeIgniter
+Import CSV File Data into MySQL Database using PHP (CodeIgniter)
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+A CSV (comma-separated values) file stores the tabular data in plain text format. Using CSV file you can store all the data and import the CSV file data into the database at once using PHP and MySQL. Import CSV into MySQL helps to save the user time and avoid repetitive work. In this tutorial, we will show you how to upload and import CSV file data into MySQL database using PHP.
+
+Here we’ll build an example script to import members data into the database. According to this script functionality, the user would be able to upload a CSV file of members details and members data would be inserted into the MySQL database using PHP.
 
 *******************
-Release Information
+Step 1: Create Database Table
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+You should create a table (member) in the database to store the member’s data. The following SQL creates a member table with some basic fields.
 
 **************************
-Changelog and New Features
+Step 2: Connect to the Database
 **************************
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+Though we use CodeIgniter 3.1.2, we need to config our database configuration in application->config->database.php file.
 
 *******************
-Server Requirements
+Step 3: Create a view page
 *******************
 
-PHP version 5.6 or newer is recommended.
-
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+To upload the csv file, we need to create a view page.
 
 ************
-Installation
+Step 4: Import CSV Data to Database
 ************
 
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
+The following works are processed in this file.
+
+Validates the uploaded file whether it is a valid .csv file.
+The is_uploaded_file() function is checks whether the CSV file is uploaded via HTTP POST.
+The fopen() function opens the CSV file in read-only mode.
+The fgetcsv() function is used to parse the member’s data from the open CSV file. This function is called in the while loop to parse data from CSV file.
+Members data are inserted into the database using PHP and MySQL.
+At last, the user is redirected to the main page with importing status message.
 
 *******
-License
+Conclusion
 *******
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community IRC <https://webchat.freenode.net/?channels=%23codeigniter>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+We hope this script will help you to implement the import feature in your web project easily. Here we’ve discussed the CSV import to MySQL, you can add more fields or restrictions on data import based on your requirement.
